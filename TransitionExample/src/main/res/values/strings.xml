@@ -4,5 +4,6 @@
     <string name="app_name">TransitionExample</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="button_go">Perform the transition</string>
 
 </resources>
