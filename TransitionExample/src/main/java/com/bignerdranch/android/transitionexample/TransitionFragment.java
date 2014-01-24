@@ -25,12 +25,21 @@ public class TransitionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_transition_scene_1, container, false);
-        final Scene scene = Scene.getSceneForLayout(container, R.layout.fragment_transition_scene_2, getActivity());
+        View secondView = inflater.inflate(R.layout.fragment_transition_scene_2, container, false);
+        final Scene scene = new Scene(container, (ViewGroup)secondView);
         Button goButton = (Button)rootView.findViewById(R.id.goButton);
         goButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 goToScene(scene);
+            }
+        });
+        final Scene originalScene = new Scene(container, (ViewGroup)rootView);
+        Button goBackButton = (Button)secondView.findViewById(R.id.goButton);
+        goBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToScene(originalScene);
             }
         });
         return rootView;
