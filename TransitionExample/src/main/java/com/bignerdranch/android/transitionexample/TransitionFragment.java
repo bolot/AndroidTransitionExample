@@ -2,8 +2,11 @@ package com.bignerdranch.android.transitionexample;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.transition.ChangeBounds;
+import android.transition.Fade;
 import android.transition.Scene;
 import android.transition.TransitionManager;
+import android.transition.TransitionSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,9 +29,22 @@ public class TransitionFragment extends Fragment {
         goButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TransitionManager.go(scene);
+                goToScene(scene);
             }
         });
         return rootView;
+    }
+
+    private void goToScene(Scene scene) {
+        ChangeBounds changeBounds = new ChangeBounds();
+        Fade fadeOut = new Fade(Fade.OUT);
+        Fade fadeIn = new Fade(Fade.IN);
+        TransitionSet transition = new TransitionSet();
+        transition.setOrdering(TransitionSet.ORDERING_SEQUENTIAL);
+        transition
+                .addTransition(fadeOut)
+                .addTransition(changeBounds)
+                .addTransition(fadeIn);
+        TransitionManager.go(scene, transition);
     }
 }
