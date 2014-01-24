@@ -10,6 +10,7 @@ import android.transition.TransitionSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnticipateOvershootInterpolator;
 import android.widget.Button;
 
 /**
@@ -37,7 +38,8 @@ public class TransitionFragment extends Fragment {
 
     private void goToScene(Scene scene) {
         ChangeBounds changeBounds = new ChangeBounds();
-        changeBounds.setDuration(1000);
+        changeBounds.setInterpolator(new AnticipateOvershootInterpolator());
+        changeBounds.setDuration(2000);
         Fade fadeOut = new Fade(Fade.OUT);
         fadeOut.setDuration(1000);
         Fade fadeIn = new Fade(Fade.IN);
