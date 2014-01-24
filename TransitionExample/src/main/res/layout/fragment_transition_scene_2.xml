@@ -24,10 +24,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <Button
+    <ImageView
         android:id="@+id/goButton"
-        android:text="@string/button_go"
-        android:layout_weight="1"
+        android:src="@drawable/bnr_hat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
