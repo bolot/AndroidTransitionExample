@@ -15,11 +15,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/goButton"
-        android:text="@string/button_go"
+    <LinearLayout
+        android:id="@+id/buttonContainer"
         android:layout_below="@id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/goButton"
+            android:text="@string/button_go"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 
 </RelativeLayout>
