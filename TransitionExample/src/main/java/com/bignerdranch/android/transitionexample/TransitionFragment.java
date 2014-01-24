@@ -37,8 +37,11 @@ public class TransitionFragment extends Fragment {
 
     private void goToScene(Scene scene) {
         ChangeBounds changeBounds = new ChangeBounds();
+        changeBounds.setDuration(1000);
         Fade fadeOut = new Fade(Fade.OUT);
+        fadeOut.setDuration(1000);
         Fade fadeIn = new Fade(Fade.IN);
+        fadeIn.setDuration(1000);
         TransitionSet transition = new TransitionSet();
         transition.setOrdering(TransitionSet.ORDERING_SEQUENTIAL);
         transition
