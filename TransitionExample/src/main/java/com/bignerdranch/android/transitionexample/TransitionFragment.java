@@ -2,15 +2,13 @@ package com.bignerdranch.android.transitionexample;
 
 import android.app.Fragment;
 import android.os.Bundle;
-import android.transition.ChangeBounds;
-import android.transition.Fade;
 import android.transition.Scene;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
 import android.transition.TransitionManager;
-import android.transition.TransitionSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AnticipateOvershootInterpolator;
 import android.widget.Button;
 
 /**
@@ -46,19 +44,8 @@ public class TransitionFragment extends Fragment {
     }
 
     private void goToScene(Scene scene) {
-        ChangeBounds changeBounds = new ChangeBounds();
-        changeBounds.setInterpolator(new AnticipateOvershootInterpolator());
-        changeBounds.setDuration(2000);
-        Fade fadeOut = new Fade(Fade.OUT);
-        fadeOut.setDuration(1000);
-        Fade fadeIn = new Fade(Fade.IN);
-        fadeIn.setDuration(1000);
-        TransitionSet transition = new TransitionSet();
-        transition.setOrdering(TransitionSet.ORDERING_SEQUENTIAL);
-        transition
-                .addTransition(fadeOut)
-                .addTransition(changeBounds)
-                .addTransition(fadeIn);
+        TransitionInflater transitionInflater = TransitionInflater.from(getActivity());
+        Transition transition = transitionInflater.inflateTransition(R.transition.slow_auto_transition);
         TransitionManager.go(scene, transition);
     }
 }
