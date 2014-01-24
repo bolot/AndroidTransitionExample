@@ -37,7 +37,8 @@
             android:id="@+id/goButton"
             android:text="@string/button_go"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:onClick="goToScene1"/>
 
     </LinearLayout>
 
