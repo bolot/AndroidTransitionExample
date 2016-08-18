@@ -1,9 +1,11 @@
 package com.bignerdranch.android.transitionexample;
 
 import android.os.Bundle;
+import android.support.transition.ChangeBounds;
 import android.support.transition.Fade;
 import android.support.transition.Scene;
 import android.support.transition.TransitionManager;
+import android.support.transition.TransitionSet;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +29,10 @@ public class TransitionActivity extends AppCompatActivity {
 		mScene1 = Scene.getSceneForLayout(container, R.layout.fragment_transition_scene_1, this);
 		mScene2 = Scene.getSceneForLayout(container, R.layout.fragment_transition_scene_2, this);
 		mTransitionManager = new TransitionManager();
-		mTransitionManager.setTransition(mScene1, mScene2, new Fade());
+		TransitionSet transitionSet = new TransitionSet();
+		transitionSet.setOrdering(TransitionSet.ORDERING_TOGETHER);
+		transitionSet.addTransition(new Fade()).addTransition(new ChangeBounds());
+		mTransitionManager.setTransition(mScene1, mScene2, transitionSet);
 
 	}
 
